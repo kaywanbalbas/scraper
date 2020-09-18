@@ -1,8 +1,13 @@
+import os
+from dotenv import load_dotenv
 import requests
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
 
-cluster = MongoClient("mongodb+srv://admin:rnP58d0mD1Tj2D5y@cluster0.hq1ye.mongodb.net/scrape-db?retryWrites=true&w=majority")
+load_dotenv()
+password = os.getenv("mdbpassword")
+
+cluster = MongoClient(f"mongodb+srv://admin:{password}@cluster0.hq1ye.mongodb.net/scrape-db?retryWrites=true&w=majority")
 db = cluster["scrape-db"]
 collection = db["blog"]
 
