@@ -7,6 +7,7 @@ from pymongo import MongoClient
 load_dotenv()
 password = os.getenv("mdbpassword")
 
+# Load cluster, database, and collection from MongoDB
 cluster = MongoClient(f"mongodb+srv://admin:{password}@cluster0.hq1ye.mongodb.net/scrape-db?retryWrites=true&w=majority")
 db = cluster["scrape-db"]
 collection = db["blog"]
